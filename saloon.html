@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagiK_Cuts Salon</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400..900&family=Dancing+Script:wght@400..700&family=Oswald:wght@200..700&family=Pacifico&family=Poppins:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #ff8c00;
+            --secondary: #ffa500;
+            --accent: #ff4500;
+            --light: #f5f5f5;
+            --dark: #333;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #f0f0f0;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Navigation Bar */
+        .c {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .c:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-family: "Rowdies", sans-serif;
+            font-size: 2.1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            display: inline-block;
+            transition: var(--transition);
+            width: 230px;
+        }
+
+        .logo a:hover {
+            transform: scale(1.03);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo b {
+            color: whitesmoke;
+            position: relative;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .logo:hover b {
+            transform: rotate(10deg);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .navi ul {
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .navi ul li {
+            margin-right: 25px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .navi ul li:last-child {
+            margin-right: 0;
+        }
+
+        .navi ul li::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        .navi ul li:hover::after {
+            width: 100%;
+        }
+
+        .navi ul li a {
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .navi ul li a:hover {
+            color: black;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: black;
+            transform: rotate(90deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1559599101-f09722fb4948') no-repeat center center/cover;
+            color: white;
+            padding: 150px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .hero:hover::before {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-family: "Dancing Script", cursive;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            transition: var(--transition);
+        }
+
+        .hero:hover h1 {
+            transform: scale(1.05);
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.6em;
+            margin-bottom: 30px;
+            font-weight: 500;
+            font-style: italic;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-book {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-book:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-book:hover::before {
+            left: 100%;
+        }
+
+        .btn-book:active {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Content Sections */
+        .content, section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .content {
+            background: white;
+            max-width: 1000px;
+            margin: 50px auto;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.8;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+        }
+
+        .content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .founder-signature {
+            font-family: "Pacifico", cursive;
+            display: block;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .founder-signature:hover {
+            transform: scale(1.1);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            transition: var(--transition);
+        }
+
+        section:hover h2::after {
+            width: 120px;
+        }
+
+        section p {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1em;
+        }
+
+        .section-bg {
+            background-color: var(--light);
+            position: relative;
+        }
+
+        .section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/50') repeat;
+            opacity: 0.03;
+        }
+
+        /* Team Section */
+        .team {
+            background-color: white;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            max-width: 280px;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--light);
+            transition: var(--transition);
+            margin-bottom: 15px;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member h3 {
+            margin: 15px 0 5px;
+            font-size: 1.4em;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .team-member:hover h3 {
+            color: var(--accent);
+        }
+
+        .team-member p {
+            color: #777;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light);
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2em;
+            transform: scale(0);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: Georgia, serif;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5em;
+            color: rgba(255, 140, 0, 0.1);
+            line-height: 1;
+        }
+
+        blockquote {
+            font-style: italic;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            text-align: right;
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover .testimonial-author {
+            transform: scale(1.03);
+        }
+
+        /* Bookings Section */
+        .bookings {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.05), rgba(255, 69, 0, 0.05));
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .booking-form {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .booking-form:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: "Poppins", sans-serif;
+            font-size: 1em;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+        }
+
+        .form-group:focus-within label {
+            color: var(--primary);
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+
+        .btn-submit:active {
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2em;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--primary);
+            color: white;
+            transform: rotate(360deg);
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text h4 {
+            margin: 0 0 5px;
+            font-size: 1.1em;
+        }
+
+        .contact-text p {
+            margin: 0;
+            color: #666;
+        }
+
+        .contact-map {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            height: 300px;
+        }
+
+        .contact-map:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(45deg, #333, #222);
+            color: white;
+            padding: 60px 5% 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-family: "Rowdies", sans-serif;
+            font-size: 2em;
+            margin-bottom: 15px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .footer-links h4, .footer-contact h4, .footer-hours h4 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after, .footer-contact h4::after, .footer-hours h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .footer-hours p {
+            margin-bottom: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .footer-bottom a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate {
+            opacity: 0;
+        }
+
+        .animate.fadeIn {
+            animation: fadeIn 1s forwards;
+        }
+
+        .animate.slideInLeft {
+            animation: slideInLeft 1s forwards;
+        }
+
+        .animate.slideInRight {
+            animation: slideInRight 1s forwards;
+        }
+
+        .animate.slideInUp {
+            animation: slideInUp 1s forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            
+            .hero p {
+                font-size: 1.4em;
+            }
+            
+            section h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .c {
+                padding: 15px 20px;
+            }
+            
+            .navi ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(45deg, var(--secondary), var(--accent));
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .navi ul.active {
+                display: flex;
+            }
+            
+            .navi ul li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .navi ul li::after {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 100px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            
+            .hero p {
+                font-size: 1.2em;
+            }
+            
+            .btn-book {
+                padding: 12px 25px;
+            }
+            
+            .content {
+                margin: 30px 20px;
+                padding: 50px 20px;
+            }
+            
+            .team-members, .gallery-images {
+                gap: 20px;
+            }
+            
+            .booking-form {
+                padding: 30px 20px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8em;
+            }
+            
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            
+            .hero p {
+                font-size: 1.1em;
+            }
+            
+            section h2 {
+                font-size: 2em;
+            }
+            
+            .team-member {
+                max-width: 100%;
+            }
+            
+            .gallery-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="c">
+        <div class="logo">
+            <a href="#">Magi<b>K</b>_Cuts</a>
+        </div>
+        <div class="navi">
+            <ul id="menu">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#team">TEAM</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#testimonials">TESTIMONIALS</a></li>
+                <li><a href="#bookings">BOOKINGS</a></li>
+                <li><a href="#contact">CONTACT US</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Your Style, Our Passion</h1>
+            <p>Experience the magic of a perfect cut. Book your appointment today!</p>
+            <a href="#bookings" class="btn-book">Book Now</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content animate slideInUp">
+        Welcome to MagiK_Cuts - where style meets creativity. Our professional stylists are here to give you a stunning look that boosts your confidence and leaves you feeling magical. From trendy haircuts to relaxing treatments, we've got you covered. Come in and enjoy a salon experience like no other!
+        <span class="founder-signature">~Yash Royz (Founder)</span>
+    </div>
+
+    <!-- Team Section -->
+    <section id="team" class="team section-bg">
+        <h2 class="animate fadeIn">Meet Our Team</h2>
+        <p class="animate fadeIn delay-1">Our expert stylists are passionate about transforming your look with creativity and precision.</p>
+        <div class="team-members">
+            <div class="team-member animate slideInLeft delay-1">
+                <img src="jane doe.jpg" alt="Jane Doe">
+                <h3>Jane Doe</h3>
+                <p>Senior Stylist</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member animate slideInUp delay-2">
+                <img src="john smith.avif" alt="John Smith">
+                <h3>John Smith</h3>
+                <p>Hair Color Expert</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member animate slideInRight delay-3">
+                <img src="lisa ray.jpg" alt="Lisa Ray">
+                <h3>Lisa Ray</h3>
+                <p>Makeup Artist</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member animate slideInRight delay-3">
+                <img src="face.jpg" alt="Lisa Ray">
+                <h3>Veronica</h3>
+                <p>Skincare Specialist</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2 class="animate fadeIn">Gallery</h2>
+        <p class="animate fadeIn delay-1">Peek into the magic we create every day.</p>
+        <div class="gallery-container">
+            <div class="gallery-images">
+                <div class="gallery-item animate slideInLeft delay-1">
+                    <img src="test-1.jpg" alt="Gallery 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate slideInUp delay-2">
+                    <img src="test-2.jpg" alt="Gallery 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate slideInRight delay-3">
+                    <img src="test-3.jpg" alt="Gallery 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate slideInLeft delay-2">
+                    <img src="test-4.jpg" alt="Gallery 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section-bg">
+        <h2 class="animate fadeIn">Testimonials</h2>
+        <p class="animate fadeIn delay-1">What our clients say about us.</p>
+        <div class="testimonials-container">
+            <div class="testimonial-card animate slideInLeft delay-1">
+                <blockquote>
+                    "Absolutely loved my experience at MagiK_Cuts! The stylists are amazing and the vibe is top-tier. I walked in feeling ordinary and walked out feeling extraordinary. Will definitely be coming back!"
+                </blockquote>
+                <div class="testimonial-author">– Priya Sharma</div>
+            </div>
+            <div class="testimonial-card animate slideInRight delay-2">
+                <blockquote>
+                    “MagiK_Cuts gave me a complete transformation! From the welcoming ambiance to the expert hands of the stylists, everything was perfect. I walked out feeling like a star."
+                </blockquote>
+                <div class="testimonial-author">– Aarushi Mehta</div>
+            </div>
+        </div>
+        <div class="testimonial-card animate slideInRight delay-2">
+            <blockquote>
+                "Their attention to detail and professionalism blew me away. I booked a haircut and ended up getting a full style makeover. Highly recommended for anyone wanting a classy, stylish look!"
+            </blockquote>
+            <div class="testimonial-author">– Karan Malhotra</div>
+        </div>
+        <div class="testimonial-card animate slideInRight delay-2">
+            <blockquote>
+                "It truly lives up to the name—magical! The staff was friendly, and they really listened to what I wanted. I love my new look, and I’ll definitely be coming back."
+            </blockquote>
+            <div class="testimonial-author">– Sneha Desai</div>
+        </div>
+    </section>
+
+    <!-- Bookings Section -->
+    <section id="bookings" class="bookings">
+        <h2 class="animate fadeIn">Book an Appointment</h2>
+        <p class="animate fadeIn delay-1">Reserve your slot now and let us pamper you!</p>
+        <div class="booking-container">
+            <div class="booking-form animate slideInUp delay-2">
+                <form id="appointment-form" action="https://getform.io/f/bgdpzxva" method="post">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">Select a service</option>
+                            <option value="haircut">Haircut</option>
+                            <option value="coloring">Hair Coloring</option>
+                            <option value="styling">Hair Styling</option>
+                            <option value="treatment">Hair Treatment</option>
+                            <option value="makeup">Makeup</option>
+                            <option value="facial">Facial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Special Requests (Optional)</label>
+                        <textarea id="message" class="form-control" rows="3" placeholder="Any special requests or notes"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-bg">
+        <h2 class="animate fadeIn">Contact Us</h2>
+        <p class="animate fadeIn delay-1">Have a question? We're just a message away.</p>
+        <div class="contact-container">
+            <div class="contact-info animate slideInLeft delay-2">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Location</h4>
+                        <p>Time Square, Manhattan, NYC</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>+91 79895 52340</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>mmvyash.143@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Working Hours</h4>
+                        <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
+                        <p>Sunday: 10:00 AM - 3:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map animate slideInRight delay-2">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215266754809!2d-73.98784692426385!3d40.75798657138946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">Magi<span>K</span>_Cuts</div>
+                <p>At MagiK_Cuts, we believe in the transformative power of great hair. Our team of skilled professionals is dedicated to helping you look and feel your best.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#bookings">Book Appointment</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-hours">
+                <h4>Working Hours</h4>
+                <p><strong>Monday - Friday:</strong> 9:00 AM - 8:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 8:00 PM</p>
+                <p><strong>Sunday:</strong> 10:00 AM - 4:00 PM</p>
+                <p><strong>Holidays:</strong> Call for details</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Time Square, Manhattan, NYC</p>
+                <p><i class="fas fa-phone-alt"></i> +91 79895 52340</p>
+                <p><i class="fas fa-envelope"></i> mmvyash.143@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 MagiK_Cuts Salon. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> by <a href="#">Yash Royz</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (menu.classList.contains('active')) {
+                        menu.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Animation on Scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        function checkIfInView() {
+            const windowHeight = window.innerHeight;
+            const windowTopPosition = window.scrollY;
+            const windowBottomPosition = windowTopPosition + windowHeight;
+            
+            animateElements.forEach(element => {
+                const elementHeight = element.offsetHeight;
+                const elementTopPosition = element.offsetTop;
+                const elementBottomPosition = elementTopPosition + elementHeight;
+                
+                // Check if element is in viewport
+                if (
+                    (elementBottomPosition >= windowTopPosition) &&
+                    (elementTopPosition <= windowBottomPosition)
+                ) {
+                    element.style.animationPlayState = 'running';
+                }
+            });
+        }
+        
+        // Run on load
+        window.addEventListener('load', checkIfInView);
+        
+        // Run on scroll
+        window.addEventListener('scroll', checkIfInView);
+        
+        // Form Submission
+        const appointmentForm = document.getElementById('appointment-form');
+        
+        if (appointmentForm) {
+            appointmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const service = document.getElementById('service').value;
+                
+                // Simple validation
+                if (!name || !email || !phone || !date || !time || !service) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Here you would typically send the data to a server
+                // For demo purposes, we'll just show a success message
+                alert(`Thank you, ${name}! Your appointment for ${service} on ${date} at ${time} has been booked. We'll send a confirmation to ${email}.`);
+                appointmentForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
